@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://psv6o41gx557"]
+
+[ext_resource type="Script" uid="uid://bayhw6hjxu8oo" path="res://Scripts/Spawn Enemy.gd" id="1_8pjrs"]
+[ext_resource type="PackedScene" uid="uid://bkji5xm2c2fcq" path="res://Enemies/Enemy 1.tscn" id="1_uwm0f"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_8pjrs")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_uwm0f")]
+position = Vector2(36, 172)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

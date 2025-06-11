@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://btj20f6s3imnt"]
+
+[ext_resource type="Script" uid="uid://bbao6rocuohlo" path="res://Scripts/Shooting Component.gd" id="1_5h3dh"]
+
+[node name="ShootingComponent" type="Node"]
+script = ExtResource("1_5h3dh")
+pistolBulletSpeed = 100.0
+rocketBulletSpeed = 200.0
+hugePistolBulletSpeed = 50.0
+laserBulletSpeed = 1000.0

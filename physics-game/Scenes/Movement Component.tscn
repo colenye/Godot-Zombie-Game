@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ffs0fq21jt"]
+
+[ext_resource type="Script" uid="uid://d0f6qfx4bvmye" path="res://Scripts/movement.gd" id="1_txcam"]
+
+[node name="Movement Component" type="Node3D"]
+script = ExtResource("1_txcam")
+SPEED = 50.0

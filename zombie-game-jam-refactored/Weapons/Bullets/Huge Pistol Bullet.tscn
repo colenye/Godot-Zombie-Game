@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpmrlkgyd08qj"]
+
+[ext_resource type="Texture2D" uid="uid://82r612b68arg" path="res://Sprites/items & bullets sprites(16x16).png" id="1_f4xn0"]
+[ext_resource type="Script" uid="uid://c0hm68dwwubey" path="res://Inventory/Scripts/Bullet Movement.gd" id="1_j5mlu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4xn0"]
+atlas = ExtResource("1_f4xn0")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdkbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4xn0")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l028"]
+size = Vector2(13, 8)
+
+[node name="HugePistolBullet" type="CharacterBody2D"]
+script = ExtResource("1_j5mlu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bdkbo")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_8l028")

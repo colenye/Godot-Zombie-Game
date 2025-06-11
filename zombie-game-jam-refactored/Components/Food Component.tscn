@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr035fkcu1vpr"]
+
+[ext_resource type="Script" uid="uid://fqc36ody54bc" path="res://Scripts/Food Component.gd" id="1_wdrjw"]
+
+[node name="FoodComponent" type="Node"]
+script = ExtResource("1_wdrjw")

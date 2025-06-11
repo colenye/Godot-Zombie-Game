@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://6amcobcwfsbk"]
+
+[ext_resource type="PackedScene" uid="uid://dhgbb8dnmp0o7" path="res://Scenes/Enemy1.tscn" id="1_lvv5c"]
+[ext_resource type="Texture2D" uid="uid://bcre61n0c3aqg" path="res://icon.svg" id="1_vgl5k"]
+[ext_resource type="PackedScene" uid="uid://cpb1v7c0o8pkl" path="res://Scenes/Player.tscn" id="2_vgl5k"]
+[ext_resource type="PackedScene" uid="uid://byrdb2gskvref" path="res://Scenes/Enemy2.tscn" id="4_o30o5"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_vgl5k")]
+z_index = 1
+position = Vector2(500, -500)
+
+[node name="NukeComponent" parent="Player" index="4" node_paths=PackedStringArray("main")]
+main = NodePath("../..")
+
+[node name="Camera2D" parent="Player" index="7"]
+zoom = Vector2(0.29, 0.29)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="WasdMovement" parent="Player" index="8"]
+SPEED = 1000
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(284, 149)
+scale = Vector2(31.1484, 22.0781)
+texture = ExtResource("1_vgl5k")
+
+[node name="Enemy1" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(807, 529)
+
+[node name="Enemy3" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(21, -638)
+
+[node name="Enemy6" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-964, -448)
+
+[node name="Enemy7" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-481, -540)
+
+[node name="Enemy8" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-1166, 806)
+
+[node name="Enemy4" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-700, 592)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-771, 74)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_o30o5")]
+position = Vector2(-37, 303)
+
+[node name="Enemy9" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(696, 2058)
+
+[node name="Enemy10" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-90, 891)
+
+[node name="Enemy11" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-1075, 1081)
+
+[node name="Enemy12" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-592, 989)
+
+[node name="Enemy13" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-1277, 2335)
+
+[node name="Enemy14" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-811, 2121)
+
+[node name="Enemy15" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-882, 1603)
+
+[node name="Enemy16" parent="." instance=ExtResource("4_o30o5")]
+position = Vector2(-148, 1832)
+
+[node name="Enemy17" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-972, 1285)
+
+[node name="Enemy18" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-1758, 118)
+
+[node name="Enemy19" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2743, 308)
+
+[node name="Enemy20" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2260, 216)
+
+[node name="Enemy21" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2945, 1562)
+
+[node name="Enemy22" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2479, 1348)
+
+[node name="Enemy23" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2550, 830)
+
+[node name="Enemy24" parent="." instance=ExtResource("4_o30o5")]
+position = Vector2(-1816, 1059)
+
+[node name="Enemy25" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-783, 1952)
+
+[node name="Enemy26" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-1569, 785)
+
+[node name="Enemy27" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2554, 975)
+
+[node name="Enemy28" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2071, 883)
+
+[node name="Enemy29" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2756, 2229)
+
+[node name="Enemy30" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2290, 2015)
+
+[node name="Enemy31" parent="." instance=ExtResource("1_lvv5c")]
+position = Vector2(-2361, 1497)
+
+[node name="Enemy32" parent="." instance=ExtResource("4_o30o5")]
+position = Vector2(-1627, 1726)
+
+[editable path="Player"]
+[editable path="Player/NukeComponent"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://cc0rho0t4qoqr"]
+
+[ext_resource type="Texture2D" uid="uid://ce61r1ubf7qwn" path="res://Sprites/explosion sprite sheet (48x48).png" id="1_8chaq"]
+[ext_resource type="Script" uid="uid://dknyd5jn4gikp" path="res://Scripts/nuke_impact.gd" id="1_fq380"]
+[ext_resource type="PackedScene" uid="uid://bvnfrop5mks2i" path="res://Scenes/Attack Component.tscn" id="2_i6swb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq380"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6swb"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0py6h"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72o58"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ghbx"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aqxw"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwi8k"]
+atlas = ExtResource("1_8chaq")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kuta3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq380")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6swb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0py6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72o58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ghbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aqxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwi8k")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8chaq"]
+size = Vector2(45, 46)
+
+[node name="NukeImpact" type="Area2D"]
+scale = Vector2(50, 50)
+script = ExtResource("1_fq380")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kuta3")
+frame = 6
+frame_progress = 1.0
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_i6swb")]
+collision_layer = 0
+collision_mask = 2
+damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_8chaq")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

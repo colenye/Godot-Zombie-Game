@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://b7qrdicjpa8p0"]
+
+[ext_resource type="Script" uid="uid://y0grksf40588" path="res://Inventory/Scripts/Inventory Item.gd" id="1_vmddt"]
+[ext_resource type="Resource" uid="uid://3pyh0xqvn8qm" path="res://Inventory/Items/Knife.tres" id="2_kpq22"]
+[ext_resource type="Resource" uid="uid://bsobqjgcro7c3" path="res://Inventory/Items/Pistol.tres" id="3_enc5v"]
+[ext_resource type="Resource" uid="uid://dvlqovwbn6esi" path="res://Inventory/Items/Rocket.tres" id="4_vmddt"]
+[ext_resource type="Script" uid="uid://wceddukxn6ju" path="res://Inventory/Scripts/Inventory.gd" id="5_wtk77"]
+
+[resource]
+script = ExtResource("5_wtk77")
+items = Array[ExtResource("1_vmddt")]([null, ExtResource("2_kpq22"), ExtResource("3_enc5v"), ExtResource("4_vmddt")])
+metadata/_custom_type_script = "uid://wceddukxn6ju"

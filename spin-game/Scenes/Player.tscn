@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://cpb1v7c0o8pkl"]
+
+[ext_resource type="PackedScene" uid="uid://duy8rsibjlw6l" path="res://Scenes/Health Component.tscn" id="1_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://crpvfqymmpk7m" path="res://Scenes/Hitbox Component.tscn" id="2_gntrk"]
+[ext_resource type="Texture2D" uid="uid://bcre61n0c3aqg" path="res://icon.svg" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://bvnfrop5mks2i" path="res://Scenes/Attack Component.tscn" id="4_dewec"]
+[ext_resource type="PackedScene" uid="uid://b8qpampy12jvm" path="res://Scenes/Rotate Component.tscn" id="5_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://dbnnbmypq4xw3" path="res://Scenes/Nuke Component.tscn" id="5_52ee3"]
+[ext_resource type="PackedScene" uid="uid://yvvit4f1v1jb" path="res://Scenes/WASD Movement.tscn" id="6_nn08x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dewec"]
+size = Vector2(126, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
+size = Vector2(48, 213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+size = Vector2(127, 127)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_kyqiw")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_gntrk")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_dewec")
+
+[node name="RotateComponent" parent="." instance=ExtResource("5_5ixxa")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_dewec")]
+collision_layer = 2
+collision_mask = 2
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(-2, -173.5)
+shape = SubResource("RectangleShape2D_5ixxa")
+
+[node name="NukeComponent" parent="." instance=ExtResource("5_52ee3")]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Visual"]
+texture = ExtResource("3_gntrk")
+
+[node name="Arm" type="Sprite2D" parent="Visual"]
+position = Vector2(-1, -122)
+scale = Vector2(0.375, 2.47656)
+texture = ExtResource("3_gntrk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_gntrk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WasdMovement" parent="." instance=ExtResource("6_nn08x")]
+SPEED = 5

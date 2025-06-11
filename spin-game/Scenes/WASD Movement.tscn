@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yvvit4f1v1jb"]
+
+[ext_resource type="Script" uid="uid://d2qlof02i7p1u" path="res://Scripts/wasd_movement.gd" id="1_fhb23"]
+
+[node name="WasdMovement" type="Node2D"]
+script = ExtResource("1_fhb23")
+SPEED = 900

@@ -1,0 +1,372 @@
+[gd_scene load_steps=47 format=3 uid="uid://cgec6j36gbced"]
+
+[ext_resource type="Texture2D" uid="uid://dkgqmhmc5ciyb" path="res://Animations/Player_Character_32x32/Player_idle.png" id="1_ei3sg"]
+[ext_resource type="Texture2D" uid="uid://dva3nne2cm17e" path="res://Animations/Player_Character_32x32/Player_run.png" id="2_0r1d2"]
+[ext_resource type="PackedScene" uid="uid://bjv4pvippqtv0" path="res://Components/Player Inventory Component.tscn" id="2_h53b3"]
+[ext_resource type="Texture2D" uid="uid://fka06iw0x1gl" path="res://Animations/Player_Character_32x32/Player_knocked.png" id="2_tseti"]
+[ext_resource type="PackedScene" uid="uid://btj20f6s3imnt" path="res://Components/Shooting Component.tscn" id="3_ru3s8"]
+[ext_resource type="PackedScene" uid="uid://crvmr4xmr7il4" path="res://States/FiniteStateMachine.tscn" id="4_esx48"]
+[ext_resource type="PackedScene" uid="uid://guvmhv8qt1jx" path="res://States/Idle.tscn" id="5_0r1d2"]
+[ext_resource type="PackedScene" uid="uid://cj2wrh2wj6cdx" path="res://Weapons/Bullets/Pistol Bullet.tscn" id="6_llh0m"]
+[ext_resource type="PackedScene" uid="uid://dmy1nlmeshas" path="res://Weapons/Bullets/Laser Bullet.tscn" id="6_t2uqj"]
+[ext_resource type="PackedScene" uid="uid://n04uudvdaja0" path="res://Weapons/Bullets/Rocket Bullet.tscn" id="7_bx10t"]
+[ext_resource type="PackedScene" uid="uid://t5jmakmwqhn3" path="res://States/Run.tscn" id="7_qfgad"]
+[ext_resource type="PackedScene" uid="uid://bx4ohit5yeo1" path="res://Components/Player Movement Component.tscn" id="8_ncu4g"]
+[ext_resource type="PackedScene" uid="uid://cpmrlkgyd08qj" path="res://Weapons/Bullets/Huge Pistol Bullet.tscn" id="8_pninn"]
+[ext_resource type="PackedScene" uid="uid://d0bcc4gx6dohv" path="res://Components/Health Component.tscn" id="9_bwdm4"]
+[ext_resource type="PackedScene" uid="uid://c1q1gevh1iygg" path="res://States/Shoot.tscn" id="9_m7lsr"]
+[ext_resource type="PackedScene" uid="uid://dr035fkcu1vpr" path="res://Components/Food Component.tscn" id="10_5pxjh"]
+[ext_resource type="Resource" uid="uid://b7qrdicjpa8p0" path="res://Inventory/Player Hotbar.tres" id="11_tseti"]
+[ext_resource type="Script" uid="uid://ciqcywgrs7l2l" path="res://Scripts/Bullets.gd" id="18_bx10t"]
+
+[sub_resource type="Animation" id="Animation_h53b3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+
+[sub_resource type="Animation" id="Animation_ei3sg"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0667, 0.0999, 0.1332, 0.1665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_qfgad"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666, 0.0667, 0.0999, 0.1332, 0.1665, 0.1998, 0.2331, 0.2664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="Animation" id="Animation_m7lsr"]
+resource_name = "shoot"
+length = 0.2222
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"knocked"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666, 0.0667, 0.0999, 0.1332, 0.1665, 0.1998, 0.2331, 0.2664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h53b3"]
+_data = {
+&"RESET": SubResource("Animation_h53b3"),
+&"idle": SubResource("Animation_ei3sg"),
+&"run": SubResource("Animation_qfgad"),
+&"shoot": SubResource("Animation_m7lsr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h53b3"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru3s8"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mk1h"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esx48"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r1d2"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfgad"]
+atlas = ExtResource("1_ei3sg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjt1c"]
+atlas = ExtResource("2_tseti")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llh0m"]
+atlas = ExtResource("2_tseti")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx10t"]
+atlas = ExtResource("2_tseti")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pninn"]
+atlas = ExtResource("2_tseti")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb8ii"]
+atlas = ExtResource("2_tseti")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u7t7"]
+atlas = ExtResource("2_tseti")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncu4g"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwdm4"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tern1"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pxjh"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tseti"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7lsr"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2uqj"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26goc"]
+atlas = ExtResource("2_0r1d2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ncu4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h53b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru3s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mk1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esx48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r1d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfgad")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjt1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llh0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx10t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pninn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb8ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u7t7")
+}],
+"loop": true,
+"name": &"knocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncu4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwdm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tern1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pxjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tseti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7lsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2uqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26goc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7lsr"]
+size = Vector2(18, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2uqj"]
+size = Vector2(12, 7)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h53b3")
+}
+speed_scale = 0.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ncu4g")
+animation = &"run"
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_m7lsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_t2uqj")
+
+[node name="PlayerInventoryComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_h53b3")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="ShootingComponent" parent="." node_paths=PackedStringArray("playerInventoryComponent", "bullets", "body") instance=ExtResource("3_ru3s8")]
+playerInventoryComponent = NodePath("../PlayerInventoryComponent")
+bullets = NodePath("../Bullets")
+body = NodePath("..")
+pistolBullet = ExtResource("6_llh0m")
+rocketBullet = ExtResource("7_bx10t")
+hugePistolBullet = ExtResource("8_pninn")
+laserBullet = ExtResource("6_t2uqj")
+
+[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("4_esx48")]
+initialState = NodePath("Idle")
+
+[node name="Idle" parent="FiniteStateMachine" node_paths=PackedStringArray("animPlayer", "sprite") instance=ExtResource("5_0r1d2")]
+animPlayer = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Run" parent="FiniteStateMachine" node_paths=PackedStringArray("animPlayer", "sprite") instance=ExtResource("7_qfgad")]
+animPlayer = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Shoot" parent="FiniteStateMachine" node_paths=PackedStringArray("playerInventoryComponent", "animPlayer", "sprite") instance=ExtResource("9_m7lsr")]
+playerInventoryComponent = NodePath("../../PlayerInventoryComponent")
+animPlayer = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="PlayerMovementComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("8_ncu4g")]
+body = NodePath("..")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_bwdm4")]
+body = NodePath("..")
+
+[node name="FoodComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("10_5pxjh")]
+hotbar = ExtResource("11_tseti")
+healthComponent = NodePath("../HealthComponent")
+
+[node name="Bullets" type="Node2D" parent="."]
+script = ExtResource("18_bx10t")

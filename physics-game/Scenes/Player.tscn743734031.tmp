@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dallipvgcjrr6"]
+
+[ext_resource type="PackedScene" uid="uid://2ffs0fq21jt" path="res://Scenes/Movement Component.tscn" id="1_rpqav"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qbkls"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rpqav"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qbkls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rpqav")
+
+[node name="Movement Component" parent="." node_paths=PackedStringArray("body") instance=ExtResource("1_rpqav")]
+body = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.973399, 0.229115, 0, -0.229115, 0.973399, 0, 0.796281, 2.13997)

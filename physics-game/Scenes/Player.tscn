@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dallipvgcjrr6"]
+
+[ext_resource type="PackedScene" uid="uid://2ffs0fq21jt" path="res://Scenes/Movement Component.tscn" id="1_rpqav"]
+[ext_resource type="PackedScene" uid="uid://76csp1ec4ol4" path="res://Scenes/Explode Component.tscn" id="2_kyqiw"]
+[ext_resource type="Script" uid="uid://ejae8q2k8f1v" path="res://Scripts/spring_arm_3d.gd" id="3_gntrk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qbkls"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rpqav"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qbkls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rpqav")
+
+[node name="Movement Component" parent="." node_paths=PackedStringArray("body") instance=ExtResource("1_rpqav")]
+body = NodePath("..")
+
+[node name="ExplodeComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_kyqiw")]
+body = NodePath("..")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." node_paths=PackedStringArray("body")]
+spring_length = 25.0
+script = ExtResource("3_gntrk")
+body = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dvlqovwbn6esi"]
+
+[ext_resource type="PackedScene" uid="uid://cmaipjkp7xhnp" path="res://Weapons/Rocket.tscn" id="1_feodq"]
+[ext_resource type="Script" uid="uid://y0grksf40588" path="res://Inventory/Scripts/Inventory Item.gd" id="2_67we7"]
+
+[resource]
+script = ExtResource("2_67we7")
+name = "Rocket"
+scene = ExtResource("1_feodq")
+metadata/_custom_type_script = "uid://y0grksf40588"

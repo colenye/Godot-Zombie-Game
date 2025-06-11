@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhgbb8dnmp0o7"]
+
+[ext_resource type="Texture2D" uid="uid://bcre61n0c3aqg" path="res://icon.svg" id="1_g6sln"]
+[ext_resource type="PackedScene" uid="uid://bvnfrop5mks2i" path="res://Scenes/Attack Component.tscn" id="1_o6qrp"]
+[ext_resource type="PackedScene" uid="uid://duy8rsibjlw6l" path="res://Scenes/Health Component.tscn" id="2_fuv8d"]
+[ext_resource type="PackedScene" uid="uid://crpvfqymmpk7m" path="res://Scenes/Hitbox Component.tscn" id="3_s8s30"]
+[ext_resource type="PackedScene" uid="uid://b8qpampy12jvm" path="res://Scenes/Rotate Component.tscn" id="4_cg67d"]
+[ext_resource type="PackedScene" uid="uid://dg8kboleqcj4o" path="res://Scenes/Chase Player Component.tscn" id="6_fuv8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv8d"]
+size = Vector2(130, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6qrp"]
+size = Vector2(128, 127)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s7od6"]
+blend_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8s30"]
+size = Vector2(102, 106)
+
+[node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 6
+collision_mask = 6
+
+[node name="AttackComponent" parent="." instance=ExtResource("1_o6qrp")]
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_fuv8d")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_fuv8d")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_s8s30")]
+collision_layer = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_o6qrp")
+
+[node name="RotateComponent" parent="." instance=ExtResource("4_cg67d")]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="Visual"]
+material = SubResource("CanvasItemMaterial_s7od6")
+position = Vector2(-1, -1)
+texture = ExtResource("1_g6sln")
+
+[node name="ChasePlayerComponent" parent="." instance=ExtResource("6_fuv8d")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+shape = SubResource("RectangleShape2D_s8s30")

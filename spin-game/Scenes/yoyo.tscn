@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://s588y5nrgmm7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ms6j7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2cgi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2cgi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrkyy"]
+
+[node name="Yoyo" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(2.73, 0, 0, 0, 2.73, 0, 0, 0, 2.73, 0, 0, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703267, 0, 0)
+shape = SubResource("BoxShape3D_ms6j7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
+mesh = SubResource("BoxMesh_i2cgi")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.36868, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_i2cgi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+visible = false
+mesh = SubResource("BoxMesh_wrkyy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.934404, 0.356216, 0, -0.356216, 0.934404, -0.597164, 7.01167, 7.59317)

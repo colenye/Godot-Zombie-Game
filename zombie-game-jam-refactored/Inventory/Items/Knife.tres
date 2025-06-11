@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://3pyh0xqvn8qm"]
+
+[ext_resource type="PackedScene" uid="uid://b2x5lffw3j4c5" path="res://Weapons/Knife.tscn" id="1_8pv8d"]
+[ext_resource type="Script" uid="uid://y0grksf40588" path="res://Inventory/Scripts/Inventory Item.gd" id="2_c4ohv"]
+
+[resource]
+script = ExtResource("2_c4ohv")
+name = "Knife"
+scene = ExtResource("1_8pv8d")
+metadata/_custom_type_script = "uid://y0grksf40588"

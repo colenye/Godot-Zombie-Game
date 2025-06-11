@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm3hetvlnpxxu"]
+
+[ext_resource type="Texture2D" uid="uid://bpn317nb8h7ee" path="res://Animations/Weaonns_Sprites_32x32/Pistol_Flicker.png" id="1_sk4x2"]
+[ext_resource type="Texture2D" uid="uid://bngxvebk466q5" path="res://Animations/Weaonns_Sprites_32x32/Pistol_Shoot.png" id="2_tysf4"]
+[ext_resource type="Script" uid="uid://dwekslbpflsnf" path="res://Scripts/Pistol.gd" id="3_0lmhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tysf4"]
+atlas = ExtResource("1_sk4x2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lmhk"]
+atlas = ExtResource("2_tysf4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff4wt"]
+atlas = ExtResource("2_tysf4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c68q"]
+atlas = ExtResource("2_tysf4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tal1"]
+atlas = ExtResource("2_tysf4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgobk"]
+atlas = ExtResource("2_tysf4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lmhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tysf4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lmhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff4wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c68q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tal1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgobk")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[node name="Pistol" type="AnimatedSprite2D" groups=["gun"]]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_0lmhk")
+animation = &"idle"
+script = ExtResource("3_0lmhk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(5.035, -1.36)
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
