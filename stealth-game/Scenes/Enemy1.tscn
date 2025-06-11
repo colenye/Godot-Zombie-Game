@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjstmd06owg5i"]
+
+[ext_resource type="PackedScene" uid="uid://duhsjksoibwbk" path="res://Components/HealthComponent.tscn" id="1_s7od6"]
+[ext_resource type="PackedScene" uid="uid://daxap43m5gul0" path="res://Components/HitboxComponent.tscn" id="2_n3m8v"]
+[ext_resource type="Texture2D" uid="uid://db4qvmrtkglwq" path="res://icon.svg" id="3_n3m8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3m8v"]
+size = Vector2(127, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psd4j"]
+size = Vector2(137, 45)
+
+[node name="Enemy1" type="CharacterBody2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("3_n3m8v")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_s7od6")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_n3m8v")]
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_n3m8v")
+
+[node name="BackStab" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, -44.5)
+shape = SubResource("RectangleShape2D_psd4j")

@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://ci50aniqerplt"]
+
+[ext_resource type="Texture2D" uid="uid://tetq7lnxvhly" path="res://Assets/AnimationSheets/Effects_Sprites/explosion sprite sheet (48x48).png" id="1_a6jsl"]
+[ext_resource type="Script" uid="uid://dw71px11hd51b" path="res://Scripts/bullet_impact.gd" id="2_pgpsk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgpsk"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awon8"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq21r"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0ojo"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6edk"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qletl"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fp7w"]
+atlas = ExtResource("1_a6jsl")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7dp1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgpsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awon8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq21r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0ojo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6edk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qletl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fp7w")
+}],
+"loop": false,
+"name": &"Impact",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6jsl"]
+size = Vector2(34.6667, 33.6667)
+
+[node name="BulletImpact" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_b7dp1")
+animation = &"Impact"
+frame = 3
+frame_progress = 0.639605
+script = ExtResource("2_pgpsk")
+speed = 1.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.666666, -0.833334)
+shape = SubResource("RectangleShape2D_a6jsl")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddcwiajkg8lqs"]
+
+[ext_resource type="PackedScene" uid="uid://4dhj82jxj2vs" path="res://Scenes/UI/Stamina.tscn" id="1_2fwl4"]
+[ext_resource type="PackedScene" uid="uid://dvwj3j24edqut" path="res://Scenes/UI/Clip.tscn" id="2_dajm1"]
+[ext_resource type="Texture2D" uid="uid://c8fuva50yehkt" path="res://Assets/UI/UI healthBars and Icons(32x32).png" id="3_e6gg6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hat8c"]
+atlas = ExtResource("3_e6gg6")
+region = Rect2(120, 96, 96, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sbvi"]
+atlas = ExtResource("3_e6gg6")
+region = Rect2(24, 48, 72, 24)
+
+[node name="UI" type="CanvasLayer"]
+layer = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 655
+
+[node name="left" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Stamina" parent="HBoxContainer/left" instance=ExtResource("1_2fwl4")]
+layout_mode = 2
+size_flags_vertical = 0
+value = 50.0
+
+[node name="right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Clip" parent="HBoxContainer/right" instance=ExtResource("2_dajm1")]
+layout_mode = 2
+max_value = 5.0
+value = 5.0
+
+[node name="maxAmmo" parent="HBoxContainer/right" instance=ExtResource("1_2fwl4")]
+layout_mode = 2
+size_flags_vertical = 0
+min_value = 0.0
+value = 3.0
+texture_under = SubResource("AtlasTexture_hat8c")
+texture_progress = SubResource("AtlasTexture_3sbvi")
+
+[editable path="HBoxContainer/left/Stamina"]
+[editable path="HBoxContainer/right/maxAmmo"]

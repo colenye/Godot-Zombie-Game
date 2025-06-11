@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://denuj0vl54pma"]
+
+[ext_resource type="Script" uid="uid://drsbdwcg5hf5r" path="res://Scripts/enemies.gd" id="1_e6f6u"]
+
+[node name="Enemies" type="Node2D"]
+script = ExtResource("1_e6f6u")
+SPEED = 100

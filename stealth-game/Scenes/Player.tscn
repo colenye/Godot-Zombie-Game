@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0j6mkknab825"]
+
+[ext_resource type="PackedScene" uid="uid://blxnou4twpdy2" path="res://Components/TeleportComponent.tscn" id="1_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://duhsjksoibwbk" path="res://Components/HealthComponent.tscn" id="1_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://daxap43m5gul0" path="res://Components/HitboxComponent.tscn" id="2_gntrk"]
+[ext_resource type="Texture2D" uid="uid://db4qvmrtkglwq" path="res://icon.svg" id="3_gntrk"]
+[ext_resource type="PackedScene" uid="uid://l1ayudhneulo" path="res://Components/WASDComponent.tscn" id="4_dewec"]
+[ext_resource type="PackedScene" uid="uid://dij40fn36ubr0" path="res://Components/FlashlightComponentPlayer.tscn" id="6_nn08x"]
+[ext_resource type="PackedScene" uid="uid://c6m1w7wffry5l" path="res://Components/RotateToMouseComponent.tscn" id="7_52ee3"]
+[ext_resource type="Texture2D" uid="uid://qsbxiv81vswm" path="res://Assets/white circle.png" id="8_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://cr5yhg6dcutr5" path="res://Components/BackstabComponent.tscn" id="9_megsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+size = Vector2(128, 127)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="TeleportComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("1_5ixxa")]
+body = NodePath("..")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("3_gntrk")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_kyqiw")]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_gntrk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_gntrk")
+
+[node name="WasdComponent" parent="." instance=ExtResource("4_dewec")]
+
+[node name="FlashlightComponentPlayer" parent="." instance=ExtResource("6_nn08x")]
+position = Vector2(482, -4)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="RotateToMouse" parent="." node_paths=PackedStringArray("body") instance=ExtResource("7_52ee3")]
+body = NodePath("..")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.273873, 0.273873, 0.273873, 1)
+shadow_enabled = true
+texture = ExtResource("8_bhhdu")
+
+[node name="BackstabComponent" parent="." instance=ExtResource("9_megsn")]

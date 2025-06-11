@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkpjjsem0nsai"]
+
+[ext_resource type="Texture2D" uid="uid://1cyjsmvrdnbo" path="res://Assets/Light.png" id="1_lqbvb"]
+
+[node name="FlashlightComponent" type="PointLight2D"]
+shadow_enabled = true
+texture = ExtResource("1_lqbvb")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dij40fn36ubr0"]
+
+[ext_resource type="Texture2D" uid="uid://1cyjsmvrdnbo" path="res://Assets/Light.png" id="1_7sq60"]
+[ext_resource type="Script" uid="uid://xmi7add6b8pc" path="res://Components/flashlight_component_player.gd" id="2_scns5"]
+
+[node name="FlashlightComponentPlayer" type="PointLight2D"]
+shadow_enabled = true
+texture = ExtResource("1_7sq60")
+script = ExtResource("2_scns5")

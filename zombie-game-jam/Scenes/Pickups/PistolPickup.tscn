@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfml3aefcyety"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb81y"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nb81y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://tyvkt824bavx"]
+
+[ext_resource type="PackedScene" uid="uid://dcylwfrv7f1jv" path="res://Scenes/Characters/Enemies/Urban Zombies/U1.tscn" id="1_as1aq"]
+
+[node name="U1" type="Node2D"]
+
+[node name="U1" parent="." instance=ExtResource("1_as1aq")]
+position = Vector2(-27, 6)

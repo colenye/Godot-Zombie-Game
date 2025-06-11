@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmicw3yuwnpln"]
+
+[ext_resource type="Script" uid="uid://7w85ayfj8nwf" path="res://States/idle.gd" id="1_1gwqb"]
+
+[node name="Idle" type="Node2D"]
+script = ExtResource("1_1gwqb")
+
+[connection signal="state_transition" from="." to="." method="_on_state_transition"]

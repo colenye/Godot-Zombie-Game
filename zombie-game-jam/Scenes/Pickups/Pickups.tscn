@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct2tg7kwf4u3b"]
+
+[ext_resource type="Script" uid="uid://ct71xtou7d7qv" path="res://Scripts/pickups.gd" id="1_e3glc"]
+[ext_resource type="PackedScene" uid="uid://cypd11buuxet1" path="res://Scenes/Pickups/PistolAmmo.tscn" id="1_g7obo"]
+[ext_resource type="PackedScene" uid="uid://d32n3po7xxv0s" path="res://Scenes/Pickups/ShotgunAmmo.tscn" id="2_e3glc"]
+[ext_resource type="PackedScene" uid="uid://y5q06tlw4kr3" path="res://Scenes/Pickups/RocketAmmo.tscn" id="3_qk6ka"]
+
+[node name="Pickups" type="Node2D"]
+script = ExtResource("1_e3glc")
+
+[node name="PistolAmmo" parent="." instance=ExtResource("1_g7obo")]
+position = Vector2(12, 29)
+
+[node name="RocketAmmo" parent="." instance=ExtResource("3_qk6ka")]
+position = Vector2(-32, -10)
+
+[node name="ShotgunAmmo" parent="." instance=ExtResource("2_e3glc")]
+position = Vector2(62, -8)
+
+[connection signal="body_entered" from="PistolAmmo" to="." method="_on_pistol_ammo_body_entered"]
+[connection signal="body_shape_entered" from="PistolAmmo" to="." method="_on_pistol_ammo_body_shape_entered"]

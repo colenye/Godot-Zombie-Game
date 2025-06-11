@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnvijyn82twp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30ruw"]
+radius = 64.0
+height = 218.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crnvo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="U1" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_30ruw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_crnvo")
+animation = &"walk"

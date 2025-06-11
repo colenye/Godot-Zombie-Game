@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://l1ayudhneulo"]
+
+[ext_resource type="Script" uid="uid://dikamt6vq0eci" path="res://Components/wasd_component.gd" id="1_a7as6"]
+
+[node name="WasdComponent" type="Node"]
+script = ExtResource("1_a7as6")
